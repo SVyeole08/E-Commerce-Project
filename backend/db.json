@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "dskj fqiwerkjasdf",
+      "username": "john",
+      "email": "john@.com",
+      "password": "8723!@#%!"
+    }
+  ],
+  "products": [
+    { "id": "sdfgyhdsfgvbadfg", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ]
+}
