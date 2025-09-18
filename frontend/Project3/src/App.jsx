@@ -1,17 +1,8 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-
+import { asyncgetusers } from "./store/UserActions";
 const App = () => {
-  const getproduct = async () => {
-    try {
-      const res = await axios.get("/products");
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    getproduct();
+    asyncgetusers();
   });
   return <div>App</div>;
 };
