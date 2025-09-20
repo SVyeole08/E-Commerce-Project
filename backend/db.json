@@ -1,14 +1,31 @@
 {
   "users": [
     {
-      "id": "dskj fqiwerkjasdf",
-      "username": "john",
-      "email": "john@.com",
-      "password": "8723!@#%!"
+      "id": "81l6yXayOS__XVinXtlj8",
+      "username": "SV_yeole_08",
+      "email": "sv@yeole.com",
+      "password": "123456",
+      "confPassword": "123456",
+      "isAdmin": true
+    },
+    {
+      "id": "4QeOSR7rNRKTFpK80hYRR",
+      "username": "sv_yeole_08",
+      "email": "yeolesv1012@gmail.com",
+      "password": "159159",
+      "confPassword": "159159",
+      "isAdmin": false
     }
   ],
   "products": [
-    { "id": "sdfgyhdsfgvbadfg", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
-  ]
+    {
+      "id": "0",
+      "title": "string",
+      "price": 0.1,
+      "description": "string",
+      "category": "string",
+      "image": "http://example.com"
+    }
+  ],
+  "carts": []
 }
