@@ -6,25 +6,25 @@
       "email": "sv@yeole.com",
       "password": "123456",
       "confPassword": "123456",
-      "isAdmin": true
+      "isAdmin": false
     },
     {
-      "id": "4QeOSR7rNRKTFpK80hYRR",
+      "id": "VSfCHJBMxMSE7ljTzg-3L",
       "username": "sv_yeole_08",
       "email": "yeolesv1012@gmail.com",
-      "password": "159159",
-      "confPassword": "159159",
-      "isAdmin": false
+      "password": "123456",
+      "confPassword": "123456",
+      "isAdmin": true
     }
   ],
   "products": [
     {
       "id": "0",
-      "title": "string",
+      "title": "Shut up",
       "price": 0.1,
-      "description": "string",
+      "description": "alslksdnv; la;lsdjfl;ejslfhujasdf sdklfs",
       "category": "string",
-      "image": "http://example.com"
+      "image": "https://images.unsplash.com/photo-1758178309498-036c3d7d73b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8dG93SlpGc2twR2d8fGVufDB8fHx8fA%3D%3D"
     }
   ],
   "carts": []

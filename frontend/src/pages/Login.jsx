@@ -1,13 +1,16 @@
 import { nanoid } from "nanoid";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { asyncloginuser } from "../store/actions/UserActions";
 const Login = () => {
+  const dispatch = useDispatch();
   const LoginHandler = (user) => {
     user.id = nanoid();
-    console.log(user);
+    dispatch(asyncloginuser(user));
   };
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   return (
     <form
       onSubmit={handleSubmit(LoginHandler)}
@@ -17,12 +20,6 @@ const Login = () => {
         {...register("username")}
         type="text"
         placeholder="Will-Smith"
-        className="mb-3 outline-0 border-b text-2xl"
-      />
-      <input
-        {...register("email")}
-        type="email"
-        placeholder="will@smith.com"
         className="mb-3 outline-0 border-b text-2xl"
       />
       <input
