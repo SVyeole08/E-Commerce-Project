@@ -11,7 +11,7 @@ const Products = () => {
       ? products.map((product) => {
           return (
             <div
-              className="project w-[23%] relative h-[80vh] ml-3 mr-3 mb-6 border border-gray-200 rounded-xl shadow-lg hover:scale-102 hover:shadow-2xl transition-all duration-300 bg-white overflow-hidden"
+              className="project w-[23%] mt-10 relative h-[80vh] ml-3 mr-3 mb-6 border border-gray-200 rounded-xl shadow-lg hover:scale-102 hover:shadow-2xl transition-all duration-300 bg-white overflow-hidden"
               key={product.id}
             >
               <img
@@ -39,7 +39,7 @@ const Products = () => {
                   <p className="text-2xl font-bold text-green-600">
                     {product.price}/-
                   </p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-md hover:scale-102 hover:shadow-lg">
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors cursor-pointer duration-200 shadow-md hover:scale-102 hover:shadow-lg">
                     Add to Cart
                   </button>
                 </div>
