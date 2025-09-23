@@ -9,9 +9,17 @@ export const asyncloadproducts = () => async (dispatch) => {
     console.log(error);
   }
 };
-export const asyncreateproducts = (product) => async (dispatch) => {
+export const asynccreateproducts = (product) => async (dispatch) => {
   try {
     await axios.post("/products", product);
+    dispatch(asyncloadproducts());
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const asyncupdateproducts = (id, product) => async (dispatch) => {
+  try {
+    await axios.patch(`/products/${id}`, product);
     dispatch(asyncloadproducts());
   } catch (error) {
     console.log(error);

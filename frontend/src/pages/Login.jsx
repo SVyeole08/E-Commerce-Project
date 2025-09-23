@@ -2,13 +2,15 @@ import { nanoid } from "nanoid";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { asyncloginuser } from "../store/actions/UserActions";
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const LoginHandler = (user) => {
     user.id = nanoid();
     dispatch(asyncloginuser(user));
+    navigate("/admin/create-product");
   };
   const { register, handleSubmit } = useForm();
   return (

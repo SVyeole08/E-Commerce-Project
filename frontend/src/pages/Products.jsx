@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const products = useSelector((state) => state.productReducer.products);
@@ -23,7 +24,7 @@ const Products = () => {
                 crossOrigin="anonymous"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
-              <div className="p-4 h-[40%] flex flex-col justify-between">
+              <div className="p-4 h-[40%] relative flex flex-col justify-between">
                 <div>
                   <h1 className="text-xl font-bold text-gray-800 line-clamp-2">
                     {product.title}
@@ -43,6 +44,7 @@ const Products = () => {
                     Add to Cart
                   </button>
                 </div>
+                <Link to={`/Products/${product.id}`} className="text-blue-500 absolute top-1/2">Explore</Link>
               </div>
             </div>
           );

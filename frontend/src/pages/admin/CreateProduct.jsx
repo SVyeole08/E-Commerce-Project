@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { asyncreateproducts } from "../../store/actions/ProductActions";
+import { asynccreateproducts } from "../../store/actions/ProductActions";
 import { useDispatch } from "react-redux";
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const CreateProduct = () => {
   const CreateProductHandler = (product) => {
     product.id = nanoid();
     console.log(product);
-    dispatch(asyncreateproducts(product));
+    dispatch(asynccreateproducts(product));
     navigate("/Products");
   };
   const {
