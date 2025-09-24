@@ -49,7 +49,7 @@ const ProductDetails = () => {
   };
   return product ? (
     <div className="w-screen min-h-screen p-6 bg-gray-900 text-gray-100">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-6xl space-y-8">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-100">Product Details</h1>
         </div>

@@ -1,4 +1,23 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-1: #0f172a; /* slate-900 */
+  --bg-2: #0b1220; /* darker */
+  --accent: #06b6d4; /* cyan-400 */
+  --muted: #94a3b8; /* slate-400 */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'gilroy', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -16,4 +35,29 @@
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+.card-glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg,#06b6d4,#3b82f6);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+/* Ensure interactive controls show pointer cursor */
+button,
+input[type="button"],
+input[type="submit"],
+.btn,
+.btn-primary,
+[role="button"] {
+  cursor: pointer;
 }

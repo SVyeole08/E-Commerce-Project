@@ -1,63 +1,55 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const navigate = useNavigate();
   const products = useSelector((state) => state.productReducer.products);
-  console.log("Products from Redux store:", products);
+
   const renderproducts =
     products && Array.isArray(products)
       ? products.map((product) => {
           return (
             <div
-              onClick={() => {
-                navigate(`/Products/${product.id}`);
-              }}
-              className="w-[23%] cursor-pointer mt-10 relative h-[80vh] ml-3 mr-3 mb-6 border border-gray-200 rounded-xl shadow-lg hover:scale-102 hover:shadow-2xl transition-all duration-300 bg-white overflow-hidden"
+              onClick={() => navigate(`/Products/${product.id}`)}
+              className="cursor-pointer group"
               key={product.id}
             >
-              <img
-                className="w-full h-[60%] object-cover object-top"
-                src={product.image}
-                alt={product.title}
-                loading="lazy"
-                decoding="async"
-                crossOrigin="anonymous"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-
-              <div className="p-4 h-[40%] relative flex flex-col justify-between">
-                <div>
-                  <h1 className="text-xl font-bold text-gray-800 line-clamp-2">
-                    {product.title}
-                  </h1>
-                  <p className="text-gray-600 text-sm mb-2 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">
-                    {product.category}
-                  </span>
+              <div className="card-glass rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                <div className="w-full h-56 overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition"
+                    src={product.image}
+                    alt={product.title}
+                    loading="lazy"
+                  />
                 </div>
-                <div className="flex justify-between items-center">
-                  <p className="text-2xl font-bold text-green-600">
-                    {product.price}/-
-                  </p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors cursor-pointer duration-200 shadow-md hover:scale-102 hover:shadow-lg">
-                    Add to Cart
-                  </button>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-white line-clamp-2">{product.title}</h3>
+                  <p className="text-sm text-muted mt-2 line-clamp-2">{product.description}</p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-white/6 text-white">{product.category}</span>
+                    <div className="flex items-center gap-3">
+                      <div className="text-lg font-bold text-emerald-400">₹{product.price}</div>
+                      <button className="px-3 py-1 rounded-md bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm">Add</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           );
         })
       : [];
+
   return products && Array.isArray(products) && products.length > 0 ? (
-    <div className="overflow-auto w-screen h-screen flex-wrap items-center justify-center flex">
-      {renderproducts}
+    <div className="w-full">
+      <h2 className="text-2xl font-bold mb-6">Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {renderproducts}
+      </div>
     </div>
   ) : (
-    "Loading..."
+    <div className="w-full flex items-center justify-center py-20 text-muted">Loading...</div>
   );
 };
 
