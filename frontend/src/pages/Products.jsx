@@ -1,18 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const navigate = useNavigate();
   const products = useSelector((state) => state.productReducer.products);
   console.log("Products from Redux store:", products);
-  console.log("Products type:", typeof products);
-  console.log("Products length:", products?.length);
   const renderproducts =
     products && Array.isArray(products)
       ? products.map((product) => {
           return (
             <div
-              className="project w-[23%] mt-10 relative h-[80vh] ml-3 mr-3 mb-6 border border-gray-200 rounded-xl shadow-lg hover:scale-102 hover:shadow-2xl transition-all duration-300 bg-white overflow-hidden"
+              onClick={() => {
+                navigate(`/Products/${product.id}`);
+              }}
+              className="w-[23%] cursor-pointer mt-10 relative h-[80vh] ml-3 mr-3 mb-6 border border-gray-200 rounded-xl shadow-lg hover:scale-102 hover:shadow-2xl transition-all duration-300 bg-white overflow-hidden"
               key={product.id}
             >
               <img
@@ -24,6 +26,7 @@ const Products = () => {
                 crossOrigin="anonymous"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
+
               <div className="p-4 h-[40%] relative flex flex-col justify-between">
                 <div>
                   <h1 className="text-xl font-bold text-gray-800 line-clamp-2">
@@ -44,7 +47,6 @@ const Products = () => {
                     Add to Cart
                   </button>
                 </div>
-                <Link to={`/Products/${product.id}`} className="text-blue-500 absolute top-1/2">Explore</Link>
               </div>
             </div>
           );

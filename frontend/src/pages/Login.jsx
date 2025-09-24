@@ -10,7 +10,7 @@ const Login = () => {
   const LoginHandler = (user) => {
     user.id = nanoid();
     dispatch(asyncloginuser(user));
-    navigate("/admin/create-product");
+    navigate("/Products");
   };
   const { register, handleSubmit } = useForm();
   return (
@@ -19,9 +19,9 @@ const Login = () => {
       className="p-4 items-center justify-center w-fit flex flex-col "
     >
       <input
-        {...register("username")}
-        type="text"
-        placeholder="Will-Smith"
+        {...register("email")}
+        type="email"
+        placeholder="Will@Smith.com"
         className="mb-3 outline-0 border-b text-2xl"
       />
       <input
