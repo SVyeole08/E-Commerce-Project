@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
 import { useSelector } from "react-redux";
+import ProfileUser from "../pages/user/ProfileUser";
 
 const Mainroutes = () => {
   const {users} = useSelector(state => state.userReducer)
@@ -16,7 +17,8 @@ const Mainroutes = () => {
       <Route path="/" element={users?<Products/>:<Home />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
-      <Route path="/admin/create-product" element={<CreateProduct />} />
+      <Route path="/admin/create-product" element={<CreateProduct  />} />
+      <Route path="/admin/user-profile" element={<ProfileUser />} />
       <Route path="/Products/:id" element={<ProductDetails />} />
       <Route path="*" element={<Pageerror />} />
     </Routes>

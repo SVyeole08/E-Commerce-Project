@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   asynccurrentuser,
-  asynclogoutuser,
 } from "../store/actions/UserActions";
 
 const Nav = () => {
-  const user = useSelector((state) => state.userReducer.users);
+  const {users} = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   useEffect(() => {
     dispatch(asynccurrentuser());
   }, [dispatch]);
-  const LogoutHandler = () => {
-    dispatch(asynclogoutuser());
-    navigate("/");
-  };
+  
   return (
     <header className="w-full card-glass sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -25,16 +20,14 @@ const Nav = () => {
           <Link to="/"><div className="text-2xl font-bold text-white">MyStore</div></Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-muted">
             <NavLink to="/" className={({isActive})=> isActive? 'text-white': ''}>Home</NavLink>
-            {user && (
-              <NavLink to="/admin/create-product" className={({isActive})=> isActive? 'text-white': ''}>Create</NavLink>
-            )}
+            <NavLink to="/admin/create-product" className={({isActive})=> isActive? 'text-white': ''}>Create</NavLink>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          {user ? (
+          {users ? (
             <>
-              <div className="hidden md:block text-sm text-muted">Hi, {user.username || 'Admin'}</div>
-              <button onClick={LogoutHandler} className="px-4 py-2 rounded-md bg-white/6 hover:bg-white/10 text-white text-sm">Log Out</button>
+              <div className="hidden md:block text-sm text-muted">Hi, {users.username || 'Admin'}</div>
+              <NavLink to="/admin/user-profile"><svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 hover:fill-white" viewBox="0 0 24 24" fill="#94A3B8"><path d="M12 14V16C8.68629 16 6 18.6863 6 22H4C4 17.5817 7.58172 14 12 14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM14.5946 18.8115C14.5327 18.5511 14.5 18.2794 14.5 18C14.5 17.7207 14.5327 17.449 14.5945 17.1886L13.6029 16.6161L14.6029 14.884L15.5952 15.4569C15.9883 15.0851 16.4676 14.8034 17 14.6449V13.5H19V14.6449C19.5324 14.8034 20.0116 15.0851 20.4047 15.4569L21.3971 14.8839L22.3972 16.616L21.4055 17.1885C21.4673 17.449 21.5 17.7207 21.5 18C21.5 18.2793 21.4673 18.551 21.4055 18.8114L22.3972 19.3839L21.3972 21.116L20.4048 20.543C20.0117 20.9149 19.5325 21.1966 19.0001 21.355V22.5H17.0001V21.3551C16.4677 21.1967 15.9884 20.915 15.5953 20.5431L14.603 21.1161L13.6029 19.384L14.5946 18.8115ZM18 19.5C18.8284 19.5 19.5 18.8284 19.5 18C19.5 17.1716 18.8284 16.5 18 16.5C17.1716 16.5 16.5 17.1716 16.5 18C16.5 18.8284 17.1716 19.5 18 19.5Z"></path></svg></NavLink>
             </>
           ) : (
             <NavLink to="/Login" className="px-4 py-2 rounded-md bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm font-medium">Login</NavLink>
@@ -50,10 +43,11 @@ const Nav = () => {
         <div className="md:hidden px-6 pb-6">
           <div className="flex flex-col gap-3 text-white">
             <NavLink to="/">Home</NavLink>
-            {user ? (
+            {users ? (
               <>
+              {users && users?.isAdmin &&(
                 <NavLink to="/admin/create-product">Create Product</NavLink>
-                <button onClick={LogoutHandler} className="text-left">Log Out</button>
+              )}
               </>
             ) : (
               <NavLink to="/Login">Login</NavLink>

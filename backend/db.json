@@ -23,6 +23,14 @@
       "password": "159159",
       "confPassword": "159159",
       "isAdmin": true
+    },
+    {
+      "id": "zBfWfU3S6QMVV9-yo4vnT",
+      "username": "sdfg",
+      "email": "sdfg@fdg",
+      "password": "789789",
+      "confPassword": "789789",
+      "isAdmin": false
     }
   ],
   "products": [
