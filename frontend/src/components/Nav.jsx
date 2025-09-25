@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   asynccurrentuser,
   asynclogoutuser,
@@ -22,20 +22,18 @@ const Nav = () => {
     <header className="w-full card-glass sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="text-2xl font-bold text-white">MyStore</div>
+          <Link to="/"><div className="text-2xl font-bold text-white">MyStore</div></Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-muted">
             <NavLink to="/" className={({isActive})=> isActive? 'text-white': ''}>Home</NavLink>
-            <NavLink to="/Products" className={({isActive})=> isActive? 'text-white': ''}>Products</NavLink>
             {user && (
               <NavLink to="/admin/create-product" className={({isActive})=> isActive? 'text-white': ''}>Create</NavLink>
             )}
           </div>
         </div>
-
         <div className="flex items-center gap-4">
           {user ? (
             <>
-              <div className="hidden md:block text-sm text-muted">Hi, {user.name || 'Admin'}</div>
+              <div className="hidden md:block text-sm text-muted">Hi, {user.username || 'Admin'}</div>
               <button onClick={LogoutHandler} className="px-4 py-2 rounded-md bg-white/6 hover:bg-white/10 text-white text-sm">Log Out</button>
             </>
           ) : (
@@ -52,7 +50,6 @@ const Nav = () => {
         <div className="md:hidden px-6 pb-6">
           <div className="flex flex-col gap-3 text-white">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/Products">Products</NavLink>
             {user ? (
               <>
                 <NavLink to="/admin/create-product">Create Product</NavLink>
