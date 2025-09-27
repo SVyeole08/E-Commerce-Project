@@ -28,7 +28,7 @@ const Register = () => {
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="w-full max-w-md card-glass rounded-2xl p-8 shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Create an account</h2>
-        <p className="text-sm text-muted mb-6">Join MyStore — it's quick and easy.</p>
+  <p className="text-sm text-muted mb-6">Join Grabber — it's quick and easy.</p>
 
         <form onSubmit={handleSubmit(RegisterHandler)} className="space-y-4">
           <div>

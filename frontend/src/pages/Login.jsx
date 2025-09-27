@@ -20,7 +20,7 @@ const Login = () => {
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="w-full max-w-md card-glass rounded-2xl p-8 shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Welcome back</h2>
-        <p className="text-sm text-muted mb-6">Sign in to continue to MyStore</p>
+  <p className="text-sm text-muted mb-6">Sign in to continue to Grabber</p>
 
         <form onSubmit={handleSubmit(LoginHandler)} className="space-y-4">
           <div>

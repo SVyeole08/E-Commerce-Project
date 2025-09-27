@@ -1,9 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const ProfileUser = () => {
-  return (
-    <div>ProfileUser</div>
-  )
+  const {users}=useSelector((state) => state.userReducer);
+  return users? (
+    <div>
+        
+    </div>
+  ):(<div>Loading...</div>)
 }
 
 export default ProfileUser

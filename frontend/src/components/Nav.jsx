@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import {
   asynccurrentuser,
 } from "../store/actions/UserActions";
+import Logo from './Logo';
 
 const Nav = () => {
   const {users} = useSelector((state) => state.userReducer);
@@ -17,7 +18,7 @@ const Nav = () => {
     <header className="w-full card-glass sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link to="/"><div className="text-2xl font-bold text-white">MyStore</div></Link>
+          <Link to="/" className="flex items-center gap-3"><Logo size={36} /><div className="text-2xl font-bold text-white">Grabber</div></Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-muted">
             <NavLink to="/" className={({isActive})=> isActive? 'text-white': ''}>Home</NavLink>
             <NavLink to="/admin/create-product" className={({isActive})=> isActive? 'text-white': ''}>Create</NavLink>
