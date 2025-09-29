@@ -5,7 +5,6 @@
       "username": "SV_yeole_08",
       "email": "sv@yeole.com",
       "password": "123456",
-      "confPassword": "123456",
       "isAdmin": false
     },
     {
@@ -13,15 +12,13 @@
       "username": "sv_yeole_08",
       "email": "yeolesv1012@gmail.com",
       "password": "123456",
-      "confPassword": "123456",
       "isAdmin": false
     },
     {
       "id": "JN0vz8Vams9t0UrIL2OJ7",
-      "username": "SV_yeole_022",
-      "email": "sarvadnya.yeole@outlook.com",
-      "password": "159159",
-      "confPassword": "159159",
+      "username": "rhsfdg",
+      "email": "yeolesv1008@gmail.com",
+      "password": "136136",
       "isAdmin": true
     },
     {
@@ -29,7 +26,6 @@
       "username": "sdfg",
       "email": "sdfg@fdg",
       "password": "789789",
-      "confPassword": "789789",
       "isAdmin": false
     }
   ],

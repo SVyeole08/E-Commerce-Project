@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-2">
         <div className="flex items-center gap-3">
           <Logo size={28} />
-          <div className="text-sm text-muted">© {new Date().getFullYear()} Grabber — Built with ❤️</div>
+          <div className="text-sm text-muted">© {new Date().getFullYear()} GrabIt — Built with ❤️</div>
         </div>
         <div className="flex items-center gap-4 text-sm text-muted">
           <div className="flex items-center gap-3">

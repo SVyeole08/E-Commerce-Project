@@ -49,3 +49,12 @@ export const asyncregisterusers = (user) => async () => {
     console.log(error);
   }
 };
+export const asyncupdaterusers = (id,user) => async () => {
+  try {
+   const {data}= await axios.patch("/users/" + id, user);
+   console.log(data)
+   localStorage.setItem("user", JSON.stringify(data));
+  } catch (error) {
+    console.log(error);
+  }
+};

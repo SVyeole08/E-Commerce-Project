@@ -18,7 +18,7 @@ const Nav = () => {
     <header className="w-full card-glass sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link to="/" className="flex items-center gap-3"><Logo size={36} /><div className="text-2xl font-bold text-white">Grabber</div></Link>
+          <Link to="/" className="flex items-center gap-3"><Logo size={36}/><div className="text-2xl font-bold border-l pl-2 border-[#525D71] text-white">GrabIt</div></Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-muted">
             <NavLink to="/" className={({isActive})=> isActive? 'text-white': ''}>Home</NavLink>
             <NavLink to="/admin/create-product" className={({isActive})=> isActive? 'text-white': ''}>Create</NavLink>
