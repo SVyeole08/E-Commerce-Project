@@ -46,8 +46,7 @@ const ProfileUser = () => {
   };
 
   const DeleteHandler = () => {
-    // Keep simple: navigate back. If you have delete action, wire it here.
-    navigate("/Products");
+    navigate("/login");
   };
 
   const initials = users?.username
@@ -74,23 +73,48 @@ const ProfileUser = () => {
             <h2 className="mt-4 text-xl font-semibold">{users.username}</h2>
             <p className="text-sm text-muted">{users.email}</p>
             <div className="mt-6 flex gap-3">
-              <button onClick={() => navigate(-1)} className="px-4 py-2 rounded-lg border border-white/8 text-sm text-muted">Back</button>
-              <button onClick={DeleteHandler} className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm">Delete</button>
+              <button
+                onClick={() => navigate(-1)}
+                className="px-4 py-2 rounded-lg border border-white/8 text-sm text-muted"
+              >
+                Back
+              </button>
+              <button
+                onClick={DeleteHandler}
+                className="rounded-lg px-3 bg-red-600 text-sm text-white hover:bg-red-600/90"
+              >
+               Delete
+              </button>
             </div>
           </div>
 
           <div className="card-glass rounded-2xl p-6">
             <h3 className="text-xl font-semibold mb-4">Edit profile</h3>
-            {success && <div className="mb-4 text-sm text-emerald-300">{success}</div>}
-            <form onSubmit={handleSubmit(UpdateUserHandler)} className="space-y-4">
+            {success && (
+              <div className="mb-4 text-sm text-emerald-300">{success}</div>
+            )}
+            <form
+              onSubmit={handleSubmit(UpdateUserHandler)}
+              className="space-y-4"
+            >
               <div>
-                <label className="block text-sm text-muted mb-1">Username</label>
+                <label className="block text-sm text-muted mb-1">
+                  Username
+                </label>
                 <input
-                  {...register("username", { required: "Username is required" })}
-                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${errors.username ? 'border-red-500' : 'border-gray-700'}`}
+                  {...register("username", {
+                    required: "Username is required",
+                  })}
+                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${
+                    errors.username ? "border-red-500" : "border-gray-700"
+                  }`}
                   placeholder="Your name"
                 />
-                {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>}
+                {errors.username && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.username.message}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -98,26 +122,54 @@ const ProfileUser = () => {
                 <input
                   {...register("email", { required: "Email is required" })}
                   type="email"
-                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${errors.email ? 'border-red-500' : 'border-gray-700'}`}
+                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${
+                    errors.email ? "border-red-500" : "border-gray-700"
+                  }`}
                   placeholder="email@example.com"
                 />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm text-muted mb-1">Password</label>
+                <label className="block text-sm text-muted mb-1">
+                  Password
+                </label>
                 <input
-                  {...register("password", { minLength: { value: 6, message: 'At least 6 characters' } })}
+                  {...register("password", {
+                    minLength: { value: 6, message: "At least 6 characters" },
+                  })}
                   type="password"
-                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${errors.password ? 'border-red-500' : 'border-gray-700'}`}
+                  className={`w-full px-4 py-3 rounded-lg bg-gray-900 border ${
+                    errors.password ? "border-red-500" : "border-gray-700"
+                  }`}
                   placeholder="••••••••"
                 />
-                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
 
               <div className="flex gap-3">
-                <button type="submit" disabled={isSubmitting} className="btn-primary px-5 py-3 rounded-lg text-black font-semibold">{isSubmitting ? 'Saving...' : 'Save changes'}</button>
-                <button type="button" onClick={() => reset()} className="px-4 py-3 rounded-lg border border-white/8 text-sm text-muted">Reset</button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary px-5 py-3 rounded-lg text-black font-semibold"
+                >
+                  {isSubmitting ? "Saving..." : "Save changes"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => reset()}
+                  className="px-4 py-3 rounded-lg border border-white/8 text-sm text-muted"
+                >
+                  Reset
+                </button>
               </div>
             </form>
           </div>
@@ -125,7 +177,9 @@ const ProfileUser = () => {
       </div>
     </div>
   ) : (
-    <div className="w-screen min-h-screen flex items-center justify-center text-gray-300 bg-gray-900">Loading...</div>
+    <div className="w-screen min-h-screen flex items-center justify-center text-gray-300 bg-gray-900">
+      Loading...
+    </div>
   );
 };
 
