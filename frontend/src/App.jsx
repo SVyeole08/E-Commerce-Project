@@ -15,8 +15,10 @@ const App = () => {
   return (
     <div className="overflow-x-hidden min-h-screen text-white">
       <Nav />
-      <main className="max-w-6xl mx-auto px-6 py-8 pb-24">
-        <Mainroutes />
+      <main className="py-8 pb-24">
+        <div className="app-container">
+          <Mainroutes />
+        </div>
       </main>
       <Footer />
     </div>

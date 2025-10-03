@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { asyncupdaterusers } from "../../store/actions/UserActions";
+import { asyncdeleteusers, asynclogoutuser, asyncupdateusers } from "../../store/actions/UserActions";
 import { useEffect, useState } from "react";
 
 const ProfileUser = () => {
@@ -29,14 +29,14 @@ const ProfileUser = () => {
       reset({
         username: users.username || "",
         email: users.email || "",
-        password: "",
+        password: users.password || "",
       });
     }
   }, [users, reset]);
 
   const UpdateUserHandler = async (data) => {
     try {
-      await dispatch(asyncupdaterusers(users.id, data));
+      await dispatch(asyncupdateusers(users.id, data));
       setSuccess("Profile updated successfully.");
       setTimeout(() => setSuccess(""), 3000);
     } catch {
@@ -46,8 +46,14 @@ const ProfileUser = () => {
   };
 
   const DeleteHandler = () => {
+    dispatch(asyncdeleteusers(users.id));
     navigate("/login");
   };
+  
+  const LogOutHandler=()=>{
+    dispatch(asynclogoutuser(users.id))
+    navigate("/login")
+  }
 
   const initials = users?.username
     ? users.username
@@ -75,15 +81,29 @@ const ProfileUser = () => {
             <div className="mt-6 flex gap-3">
               <button
                 onClick={() => navigate(-1)}
-                className="px-4 py-2 rounded-lg border border-white/8 text-sm text-muted"
+                className="hover:scale-105 transition-all-ease duration-350 px-4 py-2 rounded-lg border border-white/8 text-sm text-muted"
               >
                 Back
               </button>
               <button
                 onClick={DeleteHandler}
-                className="rounded-lg px-3 bg-red-600 text-sm text-white hover:bg-red-600/90"
+                aria-label="Delete account"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transform transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
               >
-               Delete
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6h18M9 6v12a2 2 0 002 2h2a2 2 0 002-2V6M10 6V4a2 2 0 012-2h0a2 2 0 012 2v2" />
+                </svg>
+                Delete
+              </button>
+              <button
+              title="LogOut"
+                onClick={LogOutHandler}
+                aria-label="Log out"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-400 to-rose-500 text-black font-semibold px-3 py-2 rounded-lg shadow-md hover:from-rose-500 hover:to-orange-500 transform transition-all-ease duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+                </svg>
               </button>
             </div>
           </div>
@@ -159,14 +179,14 @@ const ProfileUser = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary px-5 py-3 rounded-lg text-black font-semibold"
+                  className="btn-primary px-5  hover:scale-105 transition-all-ease duration-350 py-3 rounded-lg text-black font-semibold"
                 >
                   {isSubmitting ? "Saving..." : "Save changes"}
                 </button>
                 <button
                   type="button"
                   onClick={() => reset()}
-                  className="px-4 py-3 rounded-lg border border-white/8 text-sm text-muted"
+                  className="px-4 py-3 rounded-lg border border-white/8 hover:scale-105 duration-350 transition-all text-sm text-muted"
                 >
                   Reset
                 </button>

@@ -15,18 +15,18 @@
       "isAdmin": false
     },
     {
-      "id": "JN0vz8Vams9t0UrIL2OJ7",
-      "username": "rhsfdg",
-      "email": "yeolesv1008@gmail.com",
-      "password": "136136",
-      "isAdmin": true
-    },
-    {
       "id": "zBfWfU3S6QMVV9-yo4vnT",
       "username": "sdfg",
       "email": "sdfg@fdg",
       "password": "789789",
       "isAdmin": false
+    },
+    {
+      "id": "srsN8DcoCAkfuzawRVRbx",
+      "username": "SV_yeole_022",
+      "email": "yeolesv1012@gmail.com",
+      "password": "159159",
+      "isAdmin": true
     }
   ],
   "products": [

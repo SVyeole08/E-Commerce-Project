@@ -1,6 +1,5 @@
 import axios from "../../api/axiosconfig";
 import { loaduser, removeuser } from "../reducers/UserSlice";
-
 export const asynccurrentuser = () => async (dispatch) => {
   try {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -49,11 +48,20 @@ export const asyncregisterusers = (user) => async () => {
     console.log(error);
   }
 };
-export const asyncupdaterusers = (id,user) => async () => {
+export const asyncupdateusers = (id, user) => async (dispatch) => {
   try {
-   const {data}= await axios.patch("/users/" + id, user);
-   console.log(data)
-   localStorage.setItem("user", JSON.stringify(data));
+    const { data } = await axios.patch("/users/" + id, user);
+    localStorage.setItem("user", JSON.stringify(data));
+    dispatch(loaduser(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const asyncdeleteusers = (id) => async (dispatch) => {
+  try {
+    await axios.delete("/users/" + id);
+    dispatch(asynclogoutuser());
   } catch (error) {
     console.log(error);
   }
