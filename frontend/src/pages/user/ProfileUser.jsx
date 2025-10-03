@@ -51,7 +51,7 @@ const ProfileUser = () => {
   };
   
   const LogOutHandler=()=>{
-    dispatch(asynclogoutuser(users.id))
+    dispatch(asynclogoutuser())
     navigate("/login")
   }
 

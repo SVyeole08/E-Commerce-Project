@@ -9,17 +9,42 @@ import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
 import { useSelector } from "react-redux";
 import ProfileUser from "../pages/user/ProfileUser";
+import Authwrapper from "../components/Authwrapper";
 
 const Mainroutes = () => {
-  const {users} = useSelector(state => state.userReducer)
+  const { users } = useSelector((state) => state.userReducer);
   return (
     <Routes>
-      <Route path="/" element={users?<Products/>:<Home />} />
+      <Route path="/" element={users ? <Products /> : <Home />} />
+
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
-      <Route path="/admin/create-product" element={<CreateProduct  />} />
-      <Route path="/admin/user-profile" element={<ProfileUser />} />
-      <Route path="/Products/:id" element={<ProductDetails />} />
+
+      <Route
+        path="/admin/create-product"
+        element={
+          <Authwrapper>
+            <CreateProduct />
+          </Authwrapper>
+        }
+      />
+      <Route
+        path="/admin/user-profile"
+        element={
+          <Authwrapper>
+            <ProfileUser />
+          </Authwrapper>
+        }
+      />
+      <Route
+        path="/Products/:id"
+        element={
+          <Authwrapper>
+            <ProductDetails />
+          </Authwrapper>
+        }
+      />
+
       <Route path="*" element={<Pageerror />} />
     </Routes>
   );
