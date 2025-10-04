@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Login from "../pages/Login";
@@ -7,7 +8,6 @@ import Pageerror from "../Pageerror";
 import Register from "../pages/Register";
 import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
-import { useSelector } from "react-redux";
 import ProfileUser from "../pages/user/ProfileUser";
 import Authwrapper from "../components/Authwrapper";
 

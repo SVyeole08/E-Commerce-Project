@@ -47,6 +47,23 @@ const ProductDetails = () => {
     dispatch(asyncdeleteproducts(id));
     navigate("/Products");
   };
+
+  const AddtoCartHandler = (id) => {
+    const copyuser = { ...users, cart: [...users.cart] };
+    const usercart = copyuser.cart.findIndex((c) => c.productId === product.id);
+
+    if (usercart == -1) {
+      copyuser.cart.push({ productId: id, quantity: 1 });
+    } else {
+      copyuser.cart[usercart] = {
+        productId: id,
+        quantity: copyuser.cart[usercart].quantity + 1,
+      };
+    }
+    dispatch(asyncupdateproducts(copyuser.id, copyuser));
+    console.log(copyuser);
+  };
+
   return product ? (
     <div className="w-screen min-h-screen p-6 bg-gray-900 text-gray-100">
       <div className="max-w-6xl space-y-8">
@@ -79,18 +96,21 @@ const ProductDetails = () => {
                 </span>
               </div>
               <div className="pt-4">
-                <button className="w-full md:w-auto px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition">
+                <button
+                  onClick={AddtoCartHandler}
+                  className="w-full md:w-auto px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition"
+                >
                   Add to Cart
                 </button>
               </div>
             </div>
           </div>
 
-          
-            {users && users?.isAdmin && (<div className="bg-gray-800 rounded-2xl shadow-md border border-gray-700 p-6">
-            <h3 className="text-xl font-semibold text-gray-100 mb-4">
-              Update Product
-            </h3>
+          {users && users?.isAdmin && (
+            <div className="bg-gray-800 rounded-2xl shadow-md border border-gray-700 p-6">
+              <h3 className="text-xl font-semibold text-gray-100 mb-4">
+                Update Product
+              </h3>
               <form
                 onSubmit={handleSubmit(UpdateProductHandler)}
                 className="space-y-6"
@@ -113,7 +133,6 @@ const ProductDetails = () => {
                     </p>
                   )}
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-gray-300">
@@ -221,8 +240,8 @@ const ProductDetails = () => {
                   </button>
                 </div>
               </form>
-          </div>
-            )}
+            </div>
+          )}
         </div>
       </div>
     </div>

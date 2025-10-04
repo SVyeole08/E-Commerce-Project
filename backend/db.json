@@ -5,28 +5,32 @@
       "username": "SV_yeole_08",
       "email": "sv@yeole.com",
       "password": "123456",
-      "isAdmin": false
+      "isAdmin": false,
+      "cart": []
     },
     {
       "id": "VSfCHJBMxMSE7ljTzg-3L",
       "username": "sv_yeole_08",
       "email": "yeolesv1012@gmail.com",
       "password": "123456",
-      "isAdmin": false
+      "isAdmin": false,
+      "cart": []
     },
     {
       "id": "zBfWfU3S6QMVV9-yo4vnT",
       "username": "sdfg",
       "email": "sdfg@fdg",
       "password": "789789",
-      "isAdmin": false
+      "isAdmin": false,
+      "cart": []
     },
     {
       "id": "srsN8DcoCAkfuzawRVRbx",
       "username": "SV_yeole_022",
-      "email": "yeolesv1012@gmail.com",
+      "email": "sarvadnya.yeole@outlook.com",
       "password": "159159",
-      "isAdmin": true
+      "isAdmin": true,
+      "cart": []
     }
   ],
   "products": [
