@@ -6,13 +6,17 @@ import {
   asyncdeleteproducts,
   asyncupdateproducts,
 } from "../../store/actions/ProductActions";
+import { asyncupdateusers } from "../../store/actions/UserActions";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const {
     productReducer: { products },
     userReducer: { users },
   } = useSelector((state) => state);
-  const product = products?.find((product) => product.id == id);
+  const product = products?.find(
+    (product) => String(product.id) === String(id)
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -29,6 +33,7 @@ const ProductDetails = () => {
       description: "",
     },
   });
+
   useEffect(() => {
     if (product) {
       reset({
@@ -40,6 +45,7 @@ const ProductDetails = () => {
       });
     }
   }, [product, reset]);
+
   const UpdateProductHandler = (payload) => {
     dispatch(asyncupdateproducts(id, payload));
   };
@@ -49,19 +55,30 @@ const ProductDetails = () => {
   };
 
   const AddtoCartHandler = (id) => {
-    const copyuser = { ...users, cart: [...users.cart] };
-    const usercart = copyuser.cart.findIndex((c) => c.productId === product.id);
+    if (!users) {
+      navigate("/login");
+      return;
+    }
 
-    if (usercart == -1) {
+    const cartCopy = Array.isArray(users.cart) ? [...users.cart] : [];
+    const copyuser = { ...users, cart: cartCopy };
+
+    const idx = copyuser.cart.findIndex(
+      (c) => String(c.productId) === String(id)
+    );
+
+    if (idx === -1) {
       copyuser.cart.push({ productId: id, quantity: 1 });
     } else {
-      copyuser.cart[usercart] = {
-        productId: id,
-        quantity: copyuser.cart[usercart].quantity + 1,
+      const currentQty = Number(copyuser.cart[idx].quantity) || 0;
+      copyuser.cart[idx] = {
+        ...copyuser.cart[idx],
+        quantity: currentQty + 1,
       };
     }
-    dispatch(asyncupdateproducts(copyuser.id, copyuser));
-    console.log(copyuser);
+
+    dispatch(asyncupdateusers(copyuser.id, copyuser));
+    console.log("Updated cart:", copyuser.cart);
   };
 
   return product ? (
@@ -95,9 +112,10 @@ const ProductDetails = () => {
                   ₹{product.price}
                 </span>
               </div>
+
               <div className="pt-4">
                 <button
-                  onClick={AddtoCartHandler}
+                  onClick={() => AddtoCartHandler(product.id)}
                   className="w-full md:w-auto px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition"
                 >
                   Add to Cart

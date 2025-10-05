@@ -9,7 +9,6 @@ export const asynccurrentuser = () => async (dispatch) => {
     }
     if (user) dispatch(loaduser(user));
     else console.log("User is not logged in!!");
-    console.log("Current user:", user);
   } catch (error) {
     console.log(error);
   }

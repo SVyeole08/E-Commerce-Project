@@ -10,6 +10,7 @@ import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
 import ProfileUser from "../pages/user/ProfileUser";
 import Authwrapper from "../components/Authwrapper";
+import Cart from "../pages/user/Cart";
 
 const Mainroutes = () => {
   const { users } = useSelector((state) => state.userReducer);
@@ -17,8 +18,8 @@ const Mainroutes = () => {
     <Routes>
       <Route path="/" element={users ? <Products /> : <Home />} />
 
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route
         path="/admin/create-product"
@@ -41,6 +42,14 @@ const Mainroutes = () => {
         element={
           <Authwrapper>
             <ProductDetails />
+          </Authwrapper>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <Authwrapper>
+            <Cart />
           </Authwrapper>
         }
       />
