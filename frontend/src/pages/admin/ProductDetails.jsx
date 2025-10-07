@@ -10,10 +10,8 @@ import { asyncupdateusers } from "../../store/actions/UserActions";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const {
-    productReducer: { products },
-    userReducer: { users },
-  } = useSelector((state) => state);
+  const { users } = useSelector((state) => state.userReducer);
+  const { products } = useSelector((state) => state.productReducer);
   const product = products?.find(
     (product) => String(product.id) === String(id)
   );
@@ -54,31 +52,28 @@ const ProductDetails = () => {
     navigate("/Products");
   };
 
-  const AddtoCartHandler = (id) => {
+  const AddtoCartHandler = (product) => {
     if (!users) {
       navigate("/login");
       return;
     }
 
-    const cartCopy = Array.isArray(users.cart) ? [...users.cart] : [];
-    const copyuser = { ...users, cart: cartCopy };
+    const copyuser = { ...users, cart: [...users.cart] };
 
-    const idx = copyuser.cart.findIndex(
-      (c) => String(c.productId) === String(id)
+    const cartproducts = copyuser.cart.findIndex(
+      (c) => c?.product?.id === product.id
     );
 
-    if (idx === -1) {
-      copyuser.cart.push({ productId: id, quantity: 1 });
+    if (cartproducts === -1) {
+      copyuser.cart.push({ product, quantity: 1 });
     } else {
-      const currentQty = Number(copyuser.cart[idx].quantity) || 0;
-      copyuser.cart[idx] = {
-        ...copyuser.cart[idx],
-        quantity: currentQty + 1,
+      copyuser.cart[cartproducts] = {
+        product,
+        quantity: copyuser.cart[cartproducts].quantity + 1,
       };
     }
 
     dispatch(asyncupdateusers(copyuser.id, copyuser));
-    console.log("Updated cart:", copyuser.cart);
   };
 
   return product ? (
@@ -115,7 +110,7 @@ const ProductDetails = () => {
 
               <div className="pt-4">
                 <button
-                  onClick={() => AddtoCartHandler(product.id)}
+                  onClick={() => AddtoCartHandler(product)}
                   className="w-full md:w-auto px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition"
                 >
                   Add to Cart

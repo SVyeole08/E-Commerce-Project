@@ -22,12 +22,7 @@
       "email": "sdfg@fdg",
       "password": "789789",
       "isAdmin": false,
-      "cart": [
-        {
-          "productId": "i6xrBXz63kaZw8i-GxM41",
-          "quantity": 2
-        }
-      ]
+      "cart": []
     },
     {
       "id": "srsN8DcoCAkfuzawRVRbx",
