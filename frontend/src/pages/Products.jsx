@@ -1,22 +1,23 @@
 import axios from "../api/axiosconfig";
-import React, { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Loader from "../components/Loader";
 
 const Products = () => {
   const navigate = useNavigate();
   const [products, setproducts] = useState([]);
-const [hasMore, sethasMore] = useState(true)
+  const [hasMore, sethasMore] = useState(true);
   const fetchproducts = async () => {
     try {
-      const { data } = await axios.get("/products?_limit=8");
-      if (data) {
-        sethasMore(false)
-        setproducts(data);
-      }else{
-        sethasMore(true)
+      const { data } = await axios.get(
+        `/products?_limit=8&_start=${products.length}`
+      );
+      if (data.length == 0) {
+        sethasMore(false);
+      } else {
+        sethasMore(true);
       }
+      setproducts([...products, ...data]);
     } catch (error) {
       console.log(error);
     }
@@ -68,27 +69,24 @@ const [hasMore, sethasMore] = useState(true)
         })
       : [];
 
-  return products && Array.isArray(products) && products.length > 0 ? (
+  return (
     <div className="w-full">
       <h2 className="text-2xl font-bold mb-6">Products</h2>
       <InfiniteScroll
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         dataLength={products.length}
         next={fetchproducts}
         hasMore={hasMore}
-        loader={<h4 className="text-center py-4 text-muted"><Loader /></h4>}
+        loader={<h4 className="text-center py-4 text-muted">Loading...</h4>}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all!</b>
           </p>
         }
       >
-        {renderproducts}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <Suspense fallback={<h4>Loading..</h4>}>{renderproducts}</Suspense>
+        </div>
       </InfiniteScroll>
-    </div>
-  ) : (
-    <div className="w-full flex items-center justify-center py-20 text-muted">
-      <Loader />
     </div>
   );
 };
