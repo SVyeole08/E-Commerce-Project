@@ -108,12 +108,18 @@ const ProductDetails = () => {
                 </span>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex justify-between">
                 <button
                   onClick={() => AddtoCartHandler(product)}
                   className="w-full md:w-auto px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition"
                 >
                   Add to Cart
+                </button>
+                <button
+                  onClick={() => navigate(-1)}
+                  className="w-full md:w-auto px-5 py-3 rounded-lg bg-gray-800 border border-gray-600 hover:bg-gray-700 text-white font-semibold shadow-sm transition"
+                >
+                  Go back
                 </button>
               </div>
             </div>

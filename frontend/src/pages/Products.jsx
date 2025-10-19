@@ -2,6 +2,7 @@ import axios from "../api/axiosconfig";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from "../components/Loader";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -76,7 +77,11 @@ const Products = () => {
         dataLength={products.length}
         next={fetchproducts}
         hasMore={hasMore}
-        loader={<h4 className="text-center py-4 text-muted">Loading...</h4>}
+        loader={
+          <h4 className="text-center py-4 text-muted">
+            <Loader />
+          </h4>
+        }
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all!</b>
@@ -84,7 +89,7 @@ const Products = () => {
         }
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <Suspense fallback={<h4>Loading..</h4>}>{renderproducts}</Suspense>
+          <Suspense fallback={<Loader />}>{renderproducts}</Suspense>
         </div>
       </InfiniteScroll>
     </div>
