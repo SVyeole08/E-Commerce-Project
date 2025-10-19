@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Unauthwrapper from "../components/Unauthwrapper";
 
 const Home = lazy(() => import("../pages/Home"));
 const Products = lazy(() => import("../pages/Products"));
@@ -19,8 +20,22 @@ const Mainroutes = () => {
     <Routes>
       <Route path="/" element={users ? <Products /> : <Home />} />
 
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route
+        path="/login"
+        element={
+          <Unauthwrapper>
+            <Login />
+          </Unauthwrapper>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Unauthwrapper>
+            <Register />
+          </Unauthwrapper>
+        }
+      />
 
       <Route
         path="/admin/create-product"
