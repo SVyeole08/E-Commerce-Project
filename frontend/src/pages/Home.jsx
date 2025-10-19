@@ -12,8 +12,7 @@ const Home = () => {
             Curated selection, fast shipping, and friendly support. Browse our latest collections and enjoy special offers.
           </p>
           <div className="flex items-center gap-4">
-            <a href="/Products" className="px-6 py-3 btn-primary rounded-lg text-black font-semibold">Shop Now</a>
-            <a href="#" className="px-4 py-3 rounded-lg border border-white/8 text-white text-sm">Learn More</a>
+            <a href="/login" className="px-6 py-3 btn-primary rounded-lg text-black font-semibold">Shop Now</a>
           </div>
         </div>
 

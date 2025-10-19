@@ -46,7 +46,7 @@ const Cart = () => {
         <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border p-6 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
             <img
-              src="https://i.pinimgproxy.com/?url=aHR0cHM6Ly9jZG4taWNvbnMtcG5nLmZsYXRpY29uLmNvbS8yNTYvMTY5NjEvMTY5NjE2MDgucG5n&ts=1759865217&sig=76da0265da07312f74c4dfe5712cc0c72f1355c669f5883fb45a9c65b5543b56"
+              src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg"
               alt="empty cart"
               className="w-48 h-48 object-cover rounded-md"
             />

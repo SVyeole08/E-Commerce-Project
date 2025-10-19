@@ -49,7 +49,7 @@ const ProductDetails = () => {
   };
   const DeleteHandler = () => {
     dispatch(asyncdeleteproducts(id));
-    navigate("/Products");
+    navigate("/");
   };
 
   const AddtoCartHandler = (product) => {

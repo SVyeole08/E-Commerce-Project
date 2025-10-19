@@ -3,15 +3,20 @@ import Mainroutes from "./routes/Mainroutes";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import { asynccurrentuser } from "./store/actions/UserActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncloadproducts } from "./store/actions/ProductActions";
 const App = () => {
   const dispatch = useDispatch();
+  const users = useSelector((state) => state.userReducer.users);
+  const products = useSelector((state) => state.productReducer.products);
 
   useEffect(() => {
-    dispatch(asynccurrentuser());
-    dispatch(asyncloadproducts());
-  }, [dispatch]);
+    !users && dispatch(asynccurrentuser());
+  }, [users, dispatch]);
+
+  useEffect(() => {
+    products.length === 0 && dispatch(asyncloadproducts());
+  }, [products, dispatch]);
   return (
     <div className="overflow-x-hidden min-h-screen text-white">
       <Nav />
