@@ -25,7 +25,7 @@ const App = () => {
           <Mainroutes />
         </div>
       </main>
-      <Footer />
+      <Footer/>
     </div>
   );
 };

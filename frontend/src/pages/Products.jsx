@@ -83,7 +83,7 @@ const Products = () => {
           </h4>
         }
         endMessage={
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center" }} className="mt-6 text-muted">
             <b>Yay! You have seen it all!</b>
           </p>
         }

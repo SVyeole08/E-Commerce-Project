@@ -1,9 +1,8 @@
-import React from 'react';
 import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="w-full py-4 border-t border-white/6 bg-transparent fixed bottom-0 left-0">
+    <footer className="w-full py-4 border-t border-white/6 card-glass bottom-5">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-2">
         <div className="flex items-center gap-3">
           <Logo size={28} />
