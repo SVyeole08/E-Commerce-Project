@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx json-server db.json"
+    "install:frontend": "cd frontend && npm install",
+    "start": "npx json-server db.json",
+    "build": "cd frontend && npm run build"
   },
   "dependencies": {
     "json-server": "^0.17.4"
