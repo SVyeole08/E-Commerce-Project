@@ -31,6 +31,14 @@
       "password": "159159",
       "isAdmin": true,
       "cart": []
+    },
+    {
+      "id": "Xvl1VOaP7vFjhFfxm6LJJ",
+      "username": "sdghsdfg",
+      "email": "yeolesv1012@gmail.com",
+      "password": "145145",
+      "isAdmin": false,
+      "cart": []
     }
   ],
   "products": [
