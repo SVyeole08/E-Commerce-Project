@@ -1,8 +1,9 @@
 import axios from "../api/axiosconfig";
-import { Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../components/Loader";
-import ProductTemplate from "@/components/ProductTemplate";
+import { Skeleton } from "@/components/ui/skeleton";
+const ProductTemplate = lazy(() => import("../components/ProductTemplate"));
 
 const Products = () => {
   const [products, setproducts] = useState([]);
@@ -47,7 +48,16 @@ const Products = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products && Array.isArray(products)
             ? products.map((product) => (
-                <Suspense fallback={<Loader />}>
+                <Suspense
+                  fallback={
+                    <div className="flex justify-center items-start flex-col">
+                      <Skeleton className="h-56 w-56 rounded-xl mb-2" />
+                      <Skeleton className="h-6 w-50 rounded-xl mb-2" />
+                      <Skeleton className="h-6 w-50 rounded-xl mb-2" />
+                      <Skeleton className="h-6 w-20 rounded-xl mt-8" />
+                    </div>
+                  }
+                >
                   <ProductTemplate key={product.id} product={product} />
                 </Suspense>
               ))

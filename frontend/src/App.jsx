@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { asynccurrentuser } from "./store/actions/UserActions";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadproducts } from "./store/actions/ProductActions";
+import { Skeleton } from "./components/ui/skeleton";
 const App = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer.users);
@@ -26,6 +27,7 @@ const App = () => {
         </div>
       </main>
       <Footer/>
+      
     </div>
   );
 };

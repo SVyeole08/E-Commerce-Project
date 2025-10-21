@@ -6,8 +6,7 @@ const ProductTemplate = ({ product }) => {
     <div
       onClick={() => navigate(`/Products/${product.id}`)}
       title="Click to view details"
-      className="cursor-pointer hover:scale-105 transition-all-ease-in-out duration-300"
-      key={product.id}
+      className="cursor-pointer hover:scale-105 transition-all ease-in-out duration-300"
     >
       <div className="card-glass rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
         <div className="w-full h-56 overflow-hidden">

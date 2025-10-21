@@ -241,7 +241,7 @@ const ProductDetails = () => {
                   </button>
                   <button
                     onClick={DeleteHandler}
-                    className="w-full md:w-auto text-sm bg-blue-600 hover:bg-blue-700 text-white font-semibold  px-4 py-3 rounded-sm transition shadow-sm"
+                    className="w-full md:w-auto text-sm bg-red-600 hover:bg-red-700 text-white font-semibold  px-4 py-3 rounded-sm transition shadow-sm"
                   >
                     Delete Product
                   </button>
