@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "install:frontend": "cd frontend && npm install",
-    "start": "json-server --watch db.json --port $PORT",
+    "start": "npx json-server --watch db.json --port $PORT",
     "build": "cd frontend && npm run build"
   },
   "dependencies": {
