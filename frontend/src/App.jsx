@@ -18,7 +18,7 @@ const App = () => {
     products.length === 0 && dispatch(asyncloadproducts());
   }, [products, dispatch]);
   return (
-    <div className=" text-white">
+    <div className="text-white">
       <Nav />
       <main className="py-8 pb-24">
         <div className="app-container">

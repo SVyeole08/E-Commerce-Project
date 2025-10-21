@@ -43,7 +43,7 @@ const Cart = () => {
   if (!cart.length) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-4">
-        <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border p-6 flex flex-col md:flex-row items-center gap-6">
+        <div className="max-w-4xl w-full card-glass dark:bg-gray-800 rounded-xl shadow-lg border p-6 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
             <img
               src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg"
