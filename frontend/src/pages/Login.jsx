@@ -47,7 +47,7 @@ const Login = () => {
 
           <div className="flex items-center justify-between">
             <button className="btn-primary px-4 py-2 rounded-lg text-black font-semibold">Log In</button>
-            <Link to="/Register" className="text-sm text-muted hover:text-white">Create account</Link>
+            <Link to="/register" className="text-sm text-muted hover:text-white">Create account</Link>
           </div>
         </form>
       </div>

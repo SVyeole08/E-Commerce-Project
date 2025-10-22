@@ -13,7 +13,7 @@ const Nav = () => {
   }, [dispatch]);
 
   return (
-    <header className="w-full card-glass sticky top-0 z-50">
+    <header className="w-screen card-glass sticky top-0 z-50">
       <nav className="py-4">
         <div className="app-container flex items-center justify-between">
           <div className="flex items-center gap-4">

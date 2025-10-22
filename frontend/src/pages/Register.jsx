@@ -20,7 +20,7 @@ const Register = () => {
     user.isAdmin = false;
     user.cart=[];
     dispatch(asyncregisterusers(user));
-    navigate("/Login");
+    navigate("/login");
   };
 
   return (

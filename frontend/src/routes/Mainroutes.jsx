@@ -54,7 +54,7 @@ const Mainroutes = () => {
         }
       />
       <Route
-        path="/Products/:id"
+        path="/products/:id"
         element={
           <Authwrapper>
             <ProductDetails />
