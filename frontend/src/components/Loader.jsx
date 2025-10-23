@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Loader = () => {
   return (
-    <StyledWrapper className='flex justify-center mt-10'>
-      <div className="loader" />
+    <StyledWrapper className='flex justify-center mt-10' role='status' aria-live='polite'>
+      <div className="loader" aria-label='Loading content' />
     </StyledWrapper>
   );
 }

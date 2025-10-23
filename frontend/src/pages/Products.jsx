@@ -1,31 +1,13 @@
-import axios from "../api/axiosconfig";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../components/Loader";
 import { Skeleton } from "@/components/ui/skeleton";
+import useInfiniteProducts from "@/utils/useInfiniteProducts";
+
 const ProductTemplate = lazy(() => import("../components/ProductTemplate"));
 
 const Products = () => {
-  const [products, setproducts] = useState([]);
-  const [hasMore, sethasMore] = useState(true);
-  const fetchproducts = async () => {
-    try {
-      const { data } = await axios.get(
-        `/products?_limit=8&_start=${products.length}`
-      );
-      if (data.length == 0) {
-        sethasMore(false);
-      } else {
-        sethasMore(true);
-      }
-      setproducts([...products, ...data]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchproducts();
-  }, []);
+  const { products, hasMore, fetchproducts } = useInfiniteProducts();
 
   return (
     <div className="w-full">
@@ -49,6 +31,7 @@ const Products = () => {
           {products && Array.isArray(products)
             ? products.map((product) => (
                 <Suspense
+                  key={product.id}
                   fallback={
                     <div className="flex justify-center items-start flex-col">
                       <Skeleton className="h-56 w-56 rounded-xl mb-2" />
